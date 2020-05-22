@@ -46,6 +46,7 @@ This project was largely inspired by [GangZhuo/BaiduPCS](https://github.com/Gang
   * [删除文件/目录](#删除文件目录)
   * [拷贝文件/目录](#拷贝文件目录)
   * [移动/重命名文件/目录](#移动重命名文件目录)
+  * [转存文件/目录](#转存文件目录)
   * [分享文件/目录](#分享文件目录)
     + [设置分享文件/目录](#设置分享文件目录)
     + [列出已分享文件/目录](#列出已分享文件目录)
@@ -177,6 +178,9 @@ BaiduPCS-Go login -bduss=1234567
 ```
 BaiduPCS-Go login
 请输入百度用户名(手机号/邮箱/用户名), 回车键提交 > 1234567
+```
+```
+BaiduPCS-Go login -cookies="BAIDUID=50949C0890Y7735EA6Q3870AFE38:FG=1; BIDUPSID=23345C0ACCAFFJW675EA69A870AFE38; PSTM=1981921511; BDORZ=D6745EBF6F3SD54E515D22A1598; PANWEB=1; BDUSS=ASAYUGFHSKBKGBGSU; STOKEN=gfsdge9gisfgspig34254d7879eee5756b10sgeyrw5vyw342td510ffc9414d32251; SCRC=cwrywec5evyetra26bvvehefvfg6a8; BDCLND=C%4sfgGysrZ%2BML6; PANPSC=wreyewygdfhdggedhsdfg4353"
 ```
 
 ## 列出帐号列表
@@ -605,6 +609,27 @@ BaiduPCS-Go mv /我的资源/1.mp4 /
 
 # 将 /我的资源/1.mp4 重命名为 /我的资源/3.mp4
 BaiduPCS-Go mv /我的资源/1.mp4 /我的资源/3.mp4
+```
+
+## 转存文件/目录
+```
+# 转存分享链接里的文件到当前目录:
+BaiduPCS-Go transfer <分享链接> <提取码>
+# 转存通用秒传链接里的文件到当前目录:
+BaiduPCS-Go transfer <秒传链接>
+```
+
+注意: 公开分享链接不需输入提取码, 支持多个文件/目录; 只支持包含单个文件的秒传链接.
+
+转存文件保存到当前工作目录下, 不支持指定. 欲使用此功能登录时需要使用cookies方式.
+
+#### 例子
+```
+# 将 https://pan.baidu.com/s/12L_ZZVNxz5f_2CccoyyVrW (提取码edv4) 转存到当前目录
+BaiduPCS-Go transfer https://pan.baidu.com/s/12L_ZZVNxz5f_2CccoyyVrW edv4
+
+# 将 E7E7B8613854379642F70230B179F37A#FA690D0AB7C8BC6A62WD1B6B3FC5248F#128859362#test.7z 转存到当前目录
+BaiduPCS-Go transfer E7E7B8613854379642F70230B179F37A#FA690D0AB7C8BC6A62WD1B6B3FC5248F#128859362#test.7z
 ```
 
 ## 分享文件/目录
