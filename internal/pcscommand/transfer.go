@@ -112,8 +112,8 @@ func RunRapidTransfer(link string) {
 	}
 	substrs := strings.Split(link, "#")
 	if len(substrs) == 4 {
-		md5 := substrs[0]
-		slicemd5 := substrs[1]
+		md5 := strings.ToLower(substrs[0])
+		slicemd5 := strings.ToLower(substrs[1])
 		length, _ := strconv.ParseInt(substrs[2], 10, 64)
 		filename := filepath.Join(GetActiveUser().Workdir, substrs[3])
 		RunRapidUpload(filename, md5, slicemd5, "", length)
@@ -121,8 +121,8 @@ func RunRapidTransfer(link string) {
 	}
 	substrs = strings.Split(link, "|")
 	if len(substrs) == 4 {
-		md5 := substrs[2]
-		slicemd5 := substrs[3]
+		md5 := strings.ToLower(substrs[2])
+		slicemd5 := strings.ToLower(substrs[3])
 		length, _ := strconv.ParseInt(substrs[1], 10, 64)
 		filename := filepath.Join(GetActiveUser().Workdir, substrs[0])
 		RunRapidUpload(filename, md5, slicemd5, "", length)
